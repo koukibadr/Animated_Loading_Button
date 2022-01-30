@@ -25,10 +25,19 @@ class ExampleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: AnimatedLoadingButton(),
+        child: AnimatedLoadingButton<void>(
+          onPress: onPress,
+          onAsyncCallFinished: (value){
+            print('ali');
+          },
+        ),
       ),
     );
+  }
+
+  Future<void> onPress() async{
+    await Future.delayed(const Duration(milliseconds: 4000));
   }
 }

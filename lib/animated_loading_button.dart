@@ -1,8 +1,15 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
-class AnimatedLoadingButton extends StatefulWidget {
-  const AnimatedLoadingButton({Key? key}) : super(key: key);
+class AnimatedLoadingButton<T> extends StatefulWidget {
+  final Future<T> Function() onPress;
+  final Function(T) onAsyncCallFinished;
+
+  const AnimatedLoadingButton({
+    Key? key,
+    required this.onPress,
+    required this.onAsyncCallFinished,
+  }) : super(key: key);
 
   @override
   _AnimatedLoadingButtonState createState() => _AnimatedLoadingButtonState();
@@ -15,8 +22,10 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Timer.periodic(
-          const Duration(milliseconds: 2000),
+        var timer = Timer.periodic(
+          const Duration(
+            milliseconds: 1000,
+          ),
           (timer) {
             setState(
               () {
@@ -29,11 +38,18 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
             );
           },
         );
+        widget.onPress.call().then((value) {
+          timer.cancel();
+          setState(() {
+            opacity = 1;
+          });
+          widget.onAsyncCallFinished.call(value);
+        });
       },
       child: AnimatedOpacity(
         opacity: opacity,
         duration: const Duration(
-          milliseconds: 2000,
+          milliseconds: 1000,
         ),
         child: Container(
           width: 150,

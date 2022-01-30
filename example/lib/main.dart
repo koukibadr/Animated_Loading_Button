@@ -1,3 +1,4 @@
+import 'package:animated_loading_button/animated_loading_button.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,8 +25,10 @@ class ExampleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return const Scaffold(
+      body: Center(
+        child: AnimatedLoadingButton(),
+      ),
     );
   }
 }

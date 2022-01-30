@@ -66,6 +66,19 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
               ),
             ],
           ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(Icons.login, color: Colors.white,),
+              SizedBox(
+                width: 15,
+              ),
+              Text(
+                'Login',
+                style: TextStyle(color: Colors.white),
+              )
+            ],
+          ),
         ),
       ),
     );

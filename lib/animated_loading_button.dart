@@ -2,13 +2,16 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class AnimatedLoadingButton<T> extends StatefulWidget {
+
   final Future<T> Function() onPress;
   final Function(T) onAsyncCallFinished;
+  final Widget child;
 
   const AnimatedLoadingButton({
     Key? key,
     required this.onPress,
     required this.onAsyncCallFinished,
+    required this.child,
   }) : super(key: key);
 
   @override
@@ -66,19 +69,7 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
               ),
             ],
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(Icons.login, color: Colors.white,),
-              SizedBox(
-                width: 15,
-              ),
-              Text(
-                'Login',
-                style: TextStyle(color: Colors.white),
-              )
-            ],
-          ),
+          child: widget.child,
         ),
       ),
     );

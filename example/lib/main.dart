@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 }
 
 class ExampleScreen extends StatelessWidget {
-  const ExampleScreen({ Key? key }) : super(key: key);
+  const ExampleScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +29,35 @@ class ExampleScreen extends StatelessWidget {
       body: Center(
         child: AnimatedLoadingButton<void>(
           onPress: onPress,
-          onAsyncCallFinished: (value){
+          onAsyncCallFinished: (value) {
             print('ali');
           },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(
+                Icons.login,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Text(
+                'Login',
+                style: TextStyle(color: Colors.white),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Future<void> onPress() async{
-    await Future.delayed(const Duration(milliseconds: 4000));
+  Future<void> onPress() async {
+    await Future.delayed(
+      const Duration(
+        milliseconds: 4000,
+      ),
+    );
   }
 }

@@ -3,7 +3,7 @@ import 'package:animated_loading_button/animations/faded_animation.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedLoadingButton<T> extends StatefulWidget {
-
+  
   final Future<T> Function() onPress;
   final Function(T) onAsyncCallFinished;
   final Widget child;
@@ -52,6 +52,9 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
       },
       child: FadedAnimation(
         opacity: opacity,
+        duration: const Duration(
+          milliseconds: 1000,
+        ),
         child: Container(
           width: 150,
           height: 50,

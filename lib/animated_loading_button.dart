@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:animated_loading_button/animations/faded_animation.dart';
+import 'package:animated_loading_button/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedLoadingButton<T> extends StatefulWidget {
@@ -27,21 +28,8 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
       duration: const Duration(
         milliseconds: 1000,
       ),
-      child: Container(
-        width: 150,
-        height: 50,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.blue[900],
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: const Offset(0, 1),
-            ),
-          ],
-        ),
+      child: ButtonWidget(
+        background: Colors.blue[900]!,
         child: widget.child,
       ),
     );

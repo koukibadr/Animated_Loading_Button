@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:animated_loading_button/animations/color_changing_animation.dart';
-import 'package:animated_loading_button/animations/faded_animation.dart';
-import 'package:animated_loading_button/widgets/button_widget.dart';
+import 'package:animated_loading_button/animations/progress_indicator_animation.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedLoadingButton<T> extends StatefulWidget {
@@ -24,9 +23,9 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
   @override
   Widget build(BuildContext context) {
     
-    return ColorChangingAnimation(
+    return ProgressIndicatorAnimation(
       buttonChild: widget.child,
-      colors: [Colors.blue[100]!,Colors.blue[400]!, Colors.red],
+      color: Colors.blue[400]!,
       onPress: widget.onPress,
       onAsyncCallFinished: widget.onAsyncCallFinished,
       duration: const Duration(

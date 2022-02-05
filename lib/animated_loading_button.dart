@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:animated_loading_button/animations/color_changing_animation.dart';
 import 'package:animated_loading_button/animations/faded_animation.dart';
 import 'package:animated_loading_button/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
@@ -22,15 +23,14 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
   @override
   Widget build(BuildContext context) {
-    return FadedAnimation(
-      onAsyncCallFinished: widget.onAsyncCallFinished,
+    
+    return ColorChangingAnimation(
+      buttonChild: widget.child,
+      colors: [Colors.blue[100]!,Colors.blue[400]!, Colors.red],
       onPress: widget.onPress,
+      onAsyncCallFinished: widget.onAsyncCallFinished,
       duration: const Duration(
         milliseconds: 1000,
-      ),
-      child: ButtonWidget(
-        background: Colors.blue[900]!,
-        child: widget.child,
       ),
     );
   }

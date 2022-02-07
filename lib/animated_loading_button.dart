@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:animated_loading_button/animations/text_changing_animation.dart';
+import 'package:animated_loading_button/animations/animated_icon_animation.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedLoadingButton<T> extends StatefulWidget {
@@ -21,7 +21,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
   @override
   Widget build(BuildContext context) {
-    return TextChangingAnimation(
+    return AnimatedIconAnimation(
       buttonChild: widget.child,
       color: Colors.blue[400]!,
       onPress: widget.onPress,

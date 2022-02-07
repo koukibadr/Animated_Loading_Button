@@ -3,11 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class FadedAnimation<T> extends StatefulWidget {
-  final Widget child;
-  final Duration duration;
-  final Future<T> Function() onPress;
-  final Function(T) onAsyncCallFinished;
-
   const FadedAnimation({
     Key? key,
     required this.child,
@@ -15,6 +10,11 @@ class FadedAnimation<T> extends StatefulWidget {
     required this.onAsyncCallFinished,
     required this.onPress,
   }) : super(key: key);
+
+  final Widget child;
+  final Duration duration;
+  final Future<T> Function() onPress;
+  final Function(T) onAsyncCallFinished;
 
   @override
   State<FadedAnimation> createState() => _FadedAnimationState();

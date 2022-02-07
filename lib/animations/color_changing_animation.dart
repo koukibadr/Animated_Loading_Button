@@ -2,12 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class ColorChangingAnimation<T> extends StatefulWidget {
-  final Duration duration;
-  final Future<T> Function() onPress;
-  final Function(T) onAsyncCallFinished;
-  final Widget buttonChild;
-  final List<Color> colors;
-
   const ColorChangingAnimation({
     Key? key,
     required this.duration,
@@ -16,6 +10,12 @@ class ColorChangingAnimation<T> extends StatefulWidget {
     required this.buttonChild,
     required this.colors,
   }) : super(key: key);
+
+  final Duration duration;
+  final Future<T> Function() onPress;
+  final Function(T) onAsyncCallFinished;
+  final Widget buttonChild;
+  final List<Color> colors;
 
   @override
   _ColorChangingAnimationState createState() => _ColorChangingAnimationState();

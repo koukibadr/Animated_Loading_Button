@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
 class TextChangingAnimation<T> extends StatefulWidget {
-  final Duration duration;
-  final Future<T> Function() onPress;
-  final Function(T) onAsyncCallFinished;
-  final Widget buttonChild;
-  final Color color;
-
   const TextChangingAnimation({
     Key? key,
     required this.duration,
@@ -15,6 +9,12 @@ class TextChangingAnimation<T> extends StatefulWidget {
     required this.buttonChild,
     required this.color,
   }) : super(key: key);
+
+  final Duration duration;
+  final Future<T> Function() onPress;
+  final Function(T) onAsyncCallFinished;
+  final Widget buttonChild;
+  final Color color;
 
   @override
   _TextChangingAnimationState createState() => _TextChangingAnimationState();

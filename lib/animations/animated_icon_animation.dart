@@ -31,10 +31,17 @@ class _AnimatedIconAnimationState extends State<AnimatedIconAnimation> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Timer.periodic(Duration(milliseconds: widget.duration.inMilliseconds ~/ 20), (timer) {
+        var timer = Timer.periodic(Duration(milliseconds: widget.duration.inMilliseconds ~/ 20), (timer) {
           setState(() {
             angle += 0.1;
           });
+        });
+        widget.onPress.call().then((value){
+          timer.cancel();
+          setState(() {
+            angle = 0;
+          });
+          widget.onAsyncCallFinished.call(value);
         });
       },
       child: Container(

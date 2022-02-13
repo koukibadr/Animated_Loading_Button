@@ -1,15 +1,22 @@
 import 'dart:async';
-import 'package:animated_loading_button/animations/animated_icon_animation.dart';
+import 'package:animated_loading_button/animations/rotated_icon_animation.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedLoadingButton<T> extends StatefulWidget {
   
-  const AnimatedLoadingButton.iconAnimation({
+  AnimatedLoadingButton.iconRotation({
     Key? key,
     required this.onPress,
     required this.onAsyncCallFinished,
-    required this.child,
-  }) : super(key: key);
+    required this.icon,
+    required this.buttonText,
+    this.buttonColor = Colors.blue,
+    this.animationDuration = const Duration(milliseconds: 2000),
+    this.buttonRadius,
+    this.buttonShadow
+  }) : super(key: key) {
+    child = null;
+  }
 
   const AnimatedLoadingButton.colorChangingButton({
     Key? key,
@@ -34,7 +41,15 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 
   final Future<T> Function() onPress;
   final Function(T) onAsyncCallFinished;
-  final Widget child;
+  late Widget? child;
+  final Duration animationDuration;
+
+  //for rotated icon
+  late IconData icon;
+  late Text buttonText;
+  Color buttonColor;
+  BorderRadius? buttonRadius;
+  BoxShadow? buttonShadow;
 
   @override
   _AnimatedLoadingButtonState createState() => _AnimatedLoadingButtonState();
@@ -43,7 +58,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
   @override
   Widget build(BuildContext context) {
-    return AnimatedIconAnimation(
+    return RotatedIconAnimation(
       buttonChild: widget.child,
       color: Colors.blue[400]!,
       onPress: widget.onPress,

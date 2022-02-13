@@ -3,8 +3,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class AnimatedIconAnimation<T> extends StatefulWidget {
-  const AnimatedIconAnimation({
+class RotatedIconAnimation<T> extends StatefulWidget {
+  const RotatedIconAnimation({
     Key? key,
     required this.duration,
     required this.onPress,
@@ -20,10 +20,10 @@ class AnimatedIconAnimation<T> extends StatefulWidget {
   final Color color;
 
   @override
-  _AnimatedIconAnimationState createState() => _AnimatedIconAnimationState();
+  _RotatedIconAnimationState createState() => _RotatedIconAnimationState();
 }
 
-class _AnimatedIconAnimationState extends State<AnimatedIconAnimation> {
+class _RotatedIconAnimationState extends State<RotatedIconAnimation> {
 
   double angle = 0;
 

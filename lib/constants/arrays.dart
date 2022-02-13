@@ -1,5 +1,5 @@
 enum ButtonAnimations {
-  animatedIcon,
+  rotatedIcon,
   colorChanging,
   fadingButton,
   progressIndicator,

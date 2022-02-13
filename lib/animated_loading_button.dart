@@ -3,7 +3,29 @@ import 'package:animated_loading_button/animations/animated_icon_animation.dart'
 import 'package:flutter/material.dart';
 
 class AnimatedLoadingButton<T> extends StatefulWidget {
-  const AnimatedLoadingButton({
+  
+  const AnimatedLoadingButton.iconAnimation({
+    Key? key,
+    required this.onPress,
+    required this.onAsyncCallFinished,
+    required this.child,
+  }) : super(key: key);
+
+  const AnimatedLoadingButton.colorChangingButton({
+    Key? key,
+    required this.onPress,
+    required this.onAsyncCallFinished,
+    required this.child,
+  }) : super(key: key);
+
+  const AnimatedLoadingButton.fadingAnimation({
+    Key? key,
+    required this.onPress,
+    required this.onAsyncCallFinished,
+    required this.child,
+  }) : super(key: key);
+
+  const AnimatedLoadingButton.progressIndicator({
     Key? key,
     required this.onPress,
     required this.onAsyncCallFinished,

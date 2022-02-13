@@ -27,7 +27,7 @@ class ExampleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: AnimatedLoadingButton<void>(
+        child: AnimatedLoadingButton<void>.colorChangingButton(
           onPress: onPress,
           onAsyncCallFinished: (value) {
             print('ali');

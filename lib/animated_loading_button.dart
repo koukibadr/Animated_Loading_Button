@@ -34,12 +34,20 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonText = null;
   }
 
-  const AnimatedLoadingButton.fadingAnimation({
+  AnimatedLoadingButton.fadingAnimation({
     Key? key,
     required this.onPress,
     required this.onAsyncCallFinished,
     required this.child,
-  }) : super(key: key);
+    this.animationDuration = const Duration(milliseconds: 2000),
+    this.buttonRadius,
+    this.buttonShadow
+  }) : super(key: key) {
+    buttonColor = Colors.blue;
+    icon = null;
+    buttonText = null;
+    colors = [];
+  }
 
   const AnimatedLoadingButton.progressIndicator({
     Key? key,

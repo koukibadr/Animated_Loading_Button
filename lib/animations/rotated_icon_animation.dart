@@ -18,6 +18,7 @@ class RotatedIconAnimation<T> extends StatefulWidget {
   final Function(T) onAsyncCallFinished;
   final Widget buttonChild;
   final Color color;
+  
 
   @override
   _RotatedIconAnimationState createState() => _RotatedIconAnimationState();

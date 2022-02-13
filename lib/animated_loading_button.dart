@@ -16,14 +16,23 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     this.buttonShadow
   }) : super(key: key) {
     child = null;
+    colors = [];
   }
 
-  const AnimatedLoadingButton.colorChangingButton({
+  AnimatedLoadingButton.colorChangingButton({
     Key? key,
     required this.onPress,
     required this.onAsyncCallFinished,
     required this.child,
-  }) : super(key: key);
+    required this.colors,
+    this.animationDuration = const Duration(milliseconds: 2000),
+    this.buttonRadius,
+    this.buttonShadow
+  }) : super(key: key) {
+    buttonColor = Colors.blue;
+    icon = null;
+    buttonText = null;
+  }
 
   const AnimatedLoadingButton.fadingAnimation({
     Key? key,
@@ -45,11 +54,14 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
   final Duration animationDuration;
 
   //for rotated icon
-  late IconData icon;
-  late Text buttonText;
-  Color buttonColor;
+  late IconData? icon;
+  late Text? buttonText;
+  late Color buttonColor;
   BorderRadius? buttonRadius;
   BoxShadow? buttonShadow;
+
+  //for color chaning animation
+  late List<Color> colors;
 
   @override
   _AnimatedLoadingButtonState createState() => _AnimatedLoadingButtonState();

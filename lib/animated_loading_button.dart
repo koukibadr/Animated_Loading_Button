@@ -49,12 +49,20 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     colors = [];
   }
 
-  const AnimatedLoadingButton.progressIndicator({
+  AnimatedLoadingButton.progressIndicator({
     Key? key,
     required this.onPress,
     required this.onAsyncCallFinished,
     required this.child,
-  }) : super(key: key);
+    this.animationDuration = const Duration(milliseconds: 2000),
+    this.buttonRadius,
+    this.buttonShadow
+  }) : super(key: key) {
+    buttonColor = Colors.blue;
+    icon = null;
+    buttonText = null;
+    colors = [];
+  }
 
   final Future<T> Function() onPress;
   final Function(T) onAsyncCallFinished;

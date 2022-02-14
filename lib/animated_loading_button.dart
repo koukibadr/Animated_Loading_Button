@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:animated_loading_button/animations/rotated_icon_animation.dart';
+import 'package:animated_loading_button/constants/arrays.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedLoadingButton<T> extends StatefulWidget {
@@ -17,6 +18,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
   }) : super(key: key) {
     child = null;
     colors = [];
+    buttonAnimation = ButtonAnimation.rotatedIcon;
   }
 
   AnimatedLoadingButton.colorChangingButton({
@@ -32,6 +34,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonColor = Colors.blue;
     icon = null;
     buttonText = null;
+    buttonAnimation = ButtonAnimation.colorChanging;
   }
 
   AnimatedLoadingButton.fadingAnimation({
@@ -47,6 +50,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     icon = null;
     buttonText = null;
     colors = [];
+    buttonAnimation = ButtonAnimation.fadingButton;
   }
 
   AnimatedLoadingButton.progressIndicator({
@@ -62,6 +66,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     icon = null;
     buttonText = null;
     colors = [];
+    buttonAnimation = ButtonAnimation.progressIndicator;
   }
 
   final Future<T> Function() onPress;
@@ -78,6 +83,8 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 
   //for color chaning animation
   late List<Color> colors;
+
+  late ButtonAnimation buttonAnimation;
 
   @override
   _AnimatedLoadingButtonState createState() => _AnimatedLoadingButtonState();
@@ -96,4 +103,8 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
       ),
     );
   }
+
+  
+
+
 }

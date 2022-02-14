@@ -1,4 +1,4 @@
-enum ButtonAnimations {
+enum ButtonAnimation {
   rotatedIcon,
   colorChanging,
   fadingButton,

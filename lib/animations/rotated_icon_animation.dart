@@ -9,35 +9,46 @@ class RotatedIconAnimation<T> extends StatefulWidget {
     required this.duration,
     required this.onPress,
     required this.onAsyncCallFinished,
-    required this.buttonChild,
+    required this.buttonText,
+    required this.icon,
     required this.color,
+    required this.buttonHeight,
+    required this.buttonRadius,
+    required this.buttonShadow,
+    required this.buttonWidth,
   }) : super(key: key);
 
   final Duration duration;
   final Future<T> Function() onPress;
   final Function(T) onAsyncCallFinished;
-  final Widget buttonChild;
+  final Text buttonText;
+  final Widget icon;
   final Color color;
-  
+  final BoxShadow? buttonShadow;
+  final BorderRadius? buttonRadius;
+  final double buttonWidth;
+  final double buttonHeight;
 
   @override
   _RotatedIconAnimationState createState() => _RotatedIconAnimationState();
 }
 
 class _RotatedIconAnimationState extends State<RotatedIconAnimation> {
-
+  
   double angle = 0;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        var timer = Timer.periodic(Duration(milliseconds: widget.duration.inMilliseconds ~/ 20), (timer) {
+        var timer = Timer.periodic(
+            Duration(milliseconds: widget.duration.inMilliseconds ~/ 20),
+            (timer) {
           setState(() {
             angle += 0.1;
           });
         });
-        widget.onPress.call().then((value){
+        widget.onPress.call().then((value) {
           timer.cancel();
           setState(() {
             angle = 0;
@@ -46,37 +57,25 @@ class _RotatedIconAnimationState extends State<RotatedIconAnimation> {
         });
       },
       child: Container(
-        width: 150,
-        height: 50,
+        width: widget.buttonWidth,
+        height: widget.buttonHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: widget.buttonRadius,
           color: widget.color,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: const Offset(0, 1),
-            ),
-          ],
+          boxShadow:
+              widget.buttonShadow == null ? null : [widget.buttonShadow!],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Transform.rotate(
               angle: pi * angle,
-              child: const Icon(
-                Icons.login,
-                color: Colors.white,
-              ),
+              child: widget.icon,
             ),
             const SizedBox(
               width: 15,
             ),
-            const Text(
-              'Login',
-              style: TextStyle(color: Colors.white),
-            )
+            widget.buttonText
           ],
         ),
       ),

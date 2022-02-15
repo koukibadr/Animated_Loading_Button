@@ -27,27 +27,11 @@ class ExampleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: AnimatedLoadingButton<void>.colorChangingButton(
+        child: AnimatedLoadingButton<void>.iconRotation(
+          buttonText: const Text('Login'),
+          buttonIcon: const Icon(Icons.logout_outlined),
           onPress: onPress,
-          onAsyncCallFinished: (value) {
-            print('ali');
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Icon(
-                Icons.login,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 15,
-              ),
-              Text(
-                'Login',
-                style: TextStyle(color: Colors.white),
-              )
-            ],
-          ),
+          onAsyncCallFinished: (value) {},
         ),
       ),
     );

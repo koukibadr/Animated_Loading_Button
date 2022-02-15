@@ -44,7 +44,7 @@ class _ColorChangingAnimationState extends State<ColorChangingAnimation> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Timer.periodic(widget.duration, (timer) {
+        Timer.periodic(const Duration(milliseconds: 1000), (timer) {
           if (selectedColorIndex < widget.colors.length - 1) {
             selectedColorIndex++;
           } else {
@@ -57,19 +57,13 @@ class _ColorChangingAnimationState extends State<ColorChangingAnimation> {
       },
       child: AnimatedContainer(
         duration: widget.duration,
-        //TODO update width and height attributes
-        width: 150,
-        height: 50,
+        width: widget.buttonWidth,
+        height: widget.buttonHeight,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: widget.buttonRadius,
           color: selectedColor,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: const Offset(0, 1),
-            ),
+          boxShadow: widget.buttonShadow != null ? null : [
+            widget.buttonShadow!
           ],
         ),
         child: widget.buttonChild,

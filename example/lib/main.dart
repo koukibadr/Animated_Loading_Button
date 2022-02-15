@@ -27,11 +27,34 @@ class ExampleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: AnimatedLoadingButton<void>.iconRotation(
-          buttonText: const Text('Login'),
-          buttonIcon: const Icon(Icons.logout_outlined),
-          onPress: onPress,
-          onAsyncCallFinished: (value) {},
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedLoadingButton<void>.iconRotation(
+              buttonText: const Text('Login'),
+              buttonIcon: const Icon(Icons.logout_outlined),
+              onPress: onPress,
+              onAsyncCallFinished: (value) {},
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            AnimatedLoadingButton<void>.colorChangingButton(
+              buttonChild: Row(
+                children: const [
+                  Icon(Icons.login),
+                  Text('Login')
+                ],
+              ),
+              colors: const [
+                Colors.blue,
+                Colors.cyan,
+                Colors.black
+              ],
+              onPress: onPress,
+              onAsyncCallFinished: (value) {},
+            ),
+          ],
         ),
       ),
     );

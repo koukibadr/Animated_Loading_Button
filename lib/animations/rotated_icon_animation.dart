@@ -36,20 +36,23 @@ class RotatedIconAnimation<T> extends StatefulWidget {
 class _RotatedIconAnimationState extends State<RotatedIconAnimation> {
   
   double angle = 0;
+  double animationSpeed = 300;
+  late Timer animationTimer;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        var timer = Timer.periodic(
-            Duration(milliseconds: widget.duration.inMilliseconds ~/ 20),
-            (timer) {
+        animationTimer = Timer.periodic(
+            Duration(
+              milliseconds: widget.duration.inMilliseconds ~/ animationSpeed,
+            ), (timer) {
           setState(() {
             angle += 0.1;
           });
         });
         widget.onPress.call().then((value) {
-          timer.cancel();
+          animationTimer.cancel();
           setState(() {
             angle = 0;
           });
@@ -80,5 +83,11 @@ class _RotatedIconAnimationState extends State<RotatedIconAnimation> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    animationTimer.cancel();
+    super.dispose();
   }
 }

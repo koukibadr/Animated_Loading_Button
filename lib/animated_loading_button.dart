@@ -3,50 +3,56 @@ import 'package:animated_loading_button/animations/rotated_icon_animation.dart';
 import 'package:animated_loading_button/constants/arrays.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AnimatedLoadingButton<T> extends StatefulWidget {
-  
-  AnimatedLoadingButton.iconRotation(
-      {Key? key,
-      required this.onPress,
-      required this.onAsyncCallFinished,
-      required this.buttonIcon,
-      required this.buttonText,
-      this.buttonColor = Colors.blue,
-      this.animationDuration = const Duration(milliseconds: 2000),
-      this.buttonRadius,
-      this.buttonShadow})
-      : super(key: key) {
+  AnimatedLoadingButton.iconRotation({
+    Key? key,
+    required this.onPress,
+    required this.onAsyncCallFinished,
+    required this.buttonIcon,
+    required this.buttonText,
+    this.buttonColor = Colors.blue,
+    this.animationDuration = const Duration(milliseconds: 2000),
+    this.buttonRadius,
+    this.buttonShadow,
+    this.buttonWidth = 200,
+    this.buttonHeight = 50,
+  }) : super(key: key) {
     child = null;
     colors = [];
     buttonAnimation = ButtonAnimation.rotatedIcon;
     assert(buttonIcon != null && buttonText != null);
   }
 
-  AnimatedLoadingButton.colorChangingButton(
-      {Key? key,
-      required this.onPress,
-      required this.onAsyncCallFinished,
-      required this.child,
-      required this.colors,
-      this.animationDuration = const Duration(milliseconds: 2000),
-      this.buttonRadius,
-      this.buttonShadow})
-      : super(key: key) {
+  AnimatedLoadingButton.colorChangingButton({
+    Key? key,
+    required this.onPress,
+    required this.onAsyncCallFinished,
+    required this.child,
+    required this.colors,
+    this.animationDuration = const Duration(milliseconds: 2000),
+    this.buttonRadius,
+    this.buttonShadow,
+    this.buttonWidth = 200,
+    this.buttonHeight = 50,
+  }) : super(key: key) {
     buttonColor = Colors.blue;
     buttonIcon = null;
     buttonText = null;
     buttonAnimation = ButtonAnimation.colorChanging;
   }
 
-  AnimatedLoadingButton.fadingAnimation(
-      {Key? key,
-      required this.onPress,
-      required this.onAsyncCallFinished,
-      required this.child,
-      this.animationDuration = const Duration(milliseconds: 2000),
-      this.buttonRadius,
-      this.buttonShadow})
-      : super(key: key) {
+  AnimatedLoadingButton.fadingAnimation({
+    Key? key,
+    required this.onPress,
+    required this.onAsyncCallFinished,
+    required this.child,
+    this.animationDuration = const Duration(milliseconds: 2000),
+    this.buttonRadius,
+    this.buttonShadow,
+    this.buttonWidth = 200,
+    this.buttonHeight = 50,
+  }) : super(key: key) {
     buttonColor = Colors.blue;
     buttonIcon = null;
     buttonText = null;
@@ -54,15 +60,17 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonAnimation = ButtonAnimation.fadingButton;
   }
 
-  AnimatedLoadingButton.progressIndicator(
-      {Key? key,
-      required this.onPress,
-      required this.onAsyncCallFinished,
-      required this.child,
-      this.animationDuration = const Duration(milliseconds: 2000),
-      this.buttonRadius,
-      this.buttonShadow})
-      : super(key: key) {
+  AnimatedLoadingButton.progressIndicator({
+    Key? key,
+    required this.onPress,
+    required this.onAsyncCallFinished,
+    required this.child,
+    this.animationDuration = const Duration(milliseconds: 2000),
+    this.buttonRadius,
+    this.buttonShadow,
+    this.buttonWidth = 200,
+    this.buttonHeight = 50,
+  }) : super(key: key) {
     buttonColor = Colors.blue;
     buttonIcon = null;
     buttonText = null;
@@ -87,6 +95,9 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 
   late ButtonAnimation buttonAnimation;
 
+  final double buttonWidth;
+  final double buttonHeight;
+
   @override
   _AnimatedLoadingButtonState createState() => _AnimatedLoadingButtonState();
 }
@@ -108,8 +119,8 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
           icon: widget.buttonIcon!,
           buttonShadow: widget.buttonShadow,
           buttonRadius: widget.buttonRadius,
-          buttonWidth: 200,
-          buttonHeight: 50,
+          buttonWidth: widget.buttonWidth,
+          buttonHeight: widget.buttonHeight,
           color: widget.buttonColor,
         );
       // case ButtonAnimation.colorChanging:

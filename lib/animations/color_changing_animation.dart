@@ -9,6 +9,10 @@ class ColorChangingAnimation<T> extends StatefulWidget {
     required this.onAsyncCallFinished,
     required this.buttonChild,
     required this.colors,
+    this.buttonRadius,
+    this.buttonShadow,
+    required this.buttonWidth,
+    required this.buttonHeight,
   }) : super(key: key);
 
   final Duration duration;
@@ -16,6 +20,10 @@ class ColorChangingAnimation<T> extends StatefulWidget {
   final Function(T) onAsyncCallFinished;
   final Widget buttonChild;
   final List<Color> colors;
+  final BorderRadius? buttonRadius;
+  final BoxShadow? buttonShadow;
+  final double buttonWidth;
+  final double buttonHeight;
 
   @override
   _ColorChangingAnimationState createState() => _ColorChangingAnimationState();

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:animated_loading_button/animations/faded_animation.dart';
 import 'package:animated_loading_button/animations/rotated_icon_animation.dart';
 import 'package:animated_loading_button/constants/arrays.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,6 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     this.buttonWidth = 200,
     this.buttonHeight = 50,
   }) : super(key: key) {
-    
     assert(buttonChild != null && colors.length > 1);
 
     buttonColor = Colors.blue;
@@ -64,6 +64,8 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     this.buttonWidth = 200,
     this.buttonHeight = 50,
   }) : super(key: key) {
+    assert(buttonChild != null);
+
     buttonColor = Colors.blue;
     buttonIcon = null;
     buttonText = null;
@@ -148,13 +150,17 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
           buttonWidth: widget.buttonWidth,
           buttonHeight: widget.buttonHeight,
         );
-      // case ButtonAnimation.fadingButton:
-      //   return FadedAnimation(
-      //     child: child,
-      //     duration: duration,
-      //     onAsyncCallFinished: onAsyncCallFinished,
-      //     onPress: onPress,
-      //   );
+      case ButtonAnimation.fadingButton:
+        return FadedAnimation(
+          child: widget.buttonChild!,
+          duration: widget.animationDuration,
+          onAsyncCallFinished: widget.onAsyncCallFinished,
+          onPress: widget.onPress,
+          buttonRadius: widget.buttonRadius,
+          buttonShadow: widget.buttonShadow,
+          buttonWidth: widget.buttonWidth,
+          buttonHeight: widget.buttonHeight,
+        );
       // case ButtonAnimation.progressIndicator:
       //   return ProgressIndicatorAnimation(
       //     duration: duration,

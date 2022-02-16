@@ -9,12 +9,20 @@ class FadedAnimation<T> extends StatefulWidget {
     required this.duration,
     required this.onAsyncCallFinished,
     required this.onPress,
+    this.buttonRadius,
+    this.buttonShadow,
+    required this.buttonWidth,
+    required this.buttonHeight,
   }) : super(key: key);
 
   final Widget child;
   final Duration duration;
   final Future<T> Function() onPress;
   final Function(T) onAsyncCallFinished;
+  final BorderRadius? buttonRadius;
+  final BoxShadow? buttonShadow;
+  final double buttonWidth;
+  final double buttonHeight;
 
   @override
   State<FadedAnimation> createState() => _FadedAnimationState();

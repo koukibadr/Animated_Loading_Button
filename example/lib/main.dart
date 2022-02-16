@@ -41,6 +41,7 @@ class ExampleScreen extends StatelessWidget {
             ),
             AnimatedLoadingButton<void>.colorChangingButton(
               buttonChild: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Icon(Icons.login),
                   Text('Login')
@@ -51,6 +52,20 @@ class ExampleScreen extends StatelessWidget {
                 Colors.cyan,
                 Colors.black
               ],
+              onPress: onPress,
+              onAsyncCallFinished: (value) {},
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            AnimatedLoadingButton<void>.fadingAnimation(
+              buttonChild: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.login),
+                  Text('Login')
+                ],
+              ),
               onPress: onPress,
               onAsyncCallFinished: (value) {},
             ),

@@ -32,6 +32,7 @@ class ColorChangingAnimation<T> extends StatefulWidget {
 class _ColorChangingAnimationState extends State<ColorChangingAnimation> {
   late Color selectedColor;
   late int selectedColorIndex;
+  late Timer animationTimer;
 
   @override
   void initState() {
@@ -44,7 +45,8 @@ class _ColorChangingAnimationState extends State<ColorChangingAnimation> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Timer.periodic(const Duration(milliseconds: 1000), (timer) {
+        animationTimer =
+            Timer.periodic(const Duration(milliseconds: 500), (timer) {
           if (selectedColorIndex < widget.colors.length - 1) {
             selectedColorIndex++;
           } else {
@@ -54,17 +56,23 @@ class _ColorChangingAnimationState extends State<ColorChangingAnimation> {
             selectedColor = widget.colors[selectedColorIndex];
           });
         });
+        widget.onPress.call().then((value) {
+          setState(() {
+            selectedColor = widget.colors[0];
+          });
+          animationTimer.cancel();
+          widget.onAsyncCallFinished.call(value);
+        });
       },
       child: AnimatedContainer(
-        duration: widget.duration,
+        duration: const Duration(milliseconds: 500),
         width: widget.buttonWidth,
         height: widget.buttonHeight,
         decoration: BoxDecoration(
           borderRadius: widget.buttonRadius,
           color: selectedColor,
-          boxShadow: widget.buttonShadow != null ? null : [
-            widget.buttonShadow!
-          ],
+          boxShadow:
+              widget.buttonShadow == null ? null : [widget.buttonShadow!],
         ),
         child: widget.buttonChild,
       ),

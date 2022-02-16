@@ -13,6 +13,7 @@ class FadedAnimation<T> extends StatefulWidget {
     this.buttonShadow,
     required this.buttonWidth,
     required this.buttonHeight,
+    required this.color,
   }) : super(key: key);
 
   final Widget child;
@@ -23,6 +24,7 @@ class FadedAnimation<T> extends StatefulWidget {
   final BoxShadow? buttonShadow;
   final double buttonWidth;
   final double buttonHeight;
+  final Color color;
 
   @override
   State<FadedAnimation> createState() => _FadedAnimationState();
@@ -36,9 +38,7 @@ class _FadedAnimationState extends State<FadedAnimation> {
     return InkWell(
       onTap: () {
         var timer = Timer.periodic(
-          const Duration(
-            milliseconds: 1000,
-          ),
+          widget.duration,
           (timer) {
             setState(
               () {
@@ -62,7 +62,17 @@ class _FadedAnimationState extends State<FadedAnimation> {
       child: AnimatedOpacity(
         opacity: opacity,
         duration: widget.duration,
-        child: widget.child,
+        child: Container(
+          width: widget.buttonWidth,
+          height: widget.buttonHeight,
+          decoration: BoxDecoration(
+            borderRadius: widget.buttonRadius,
+            color: widget.color,
+            boxShadow:
+                widget.buttonShadow == null ? null : [widget.buttonShadow!],
+          ),
+          child: widget.child,
+        ),
       ),
     );
   }

@@ -63,10 +63,10 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     this.buttonShadow,
     this.buttonWidth = 200,
     this.buttonHeight = 50,
+    this.buttonColor = Colors.blue,
   }) : super(key: key) {
     assert(buttonChild != null);
-
-    buttonColor = Colors.blue;
+    
     buttonIcon = null;
     buttonText = null;
     colors = [];
@@ -160,6 +160,7 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
           buttonShadow: widget.buttonShadow,
           buttonWidth: widget.buttonWidth,
           buttonHeight: widget.buttonHeight,
+          color: widget.buttonColor,
         );
       // case ButtonAnimation.progressIndicator:
       //   return ProgressIndicatorAnimation(

@@ -190,6 +190,8 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
           buttonHeight: widget.buttonHeight,
           buttonRadius: widget.buttonRadius,
           buttonShadow: widget.buttonShadow,
+          progressIndicatorBackground: widget.progressIndicatorBackground!,
+          progressIndicatorColor: widget.progressIndicatorColor!,
         );
       default:
         return Container();

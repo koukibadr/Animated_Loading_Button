@@ -10,6 +10,8 @@ class ProgressIndicatorAnimation<T> extends StatefulWidget {
     required this.color,
     required this.buttonWidth,
     required this.buttonHeight,
+    required this.progressIndicatorColor,
+    required this.progressIndicatorBackground,
     this.buttonRadius,
     this.buttonShadow,
   }) : super(key: key);
@@ -23,6 +25,8 @@ class ProgressIndicatorAnimation<T> extends StatefulWidget {
   final BoxShadow? buttonShadow;
   final double buttonWidth;
   final double buttonHeight;
+  final Color progressIndicatorColor;
+  final Color progressIndicatorBackground;
 
   @override
   _ProgressIndicatorAnimationState createState() =>
@@ -40,7 +44,7 @@ class _ProgressIndicatorAnimationState
         setState(() {
           progressValue = null;
         });
-        widget.onPress.call().then((result){
+        widget.onPress.call().then((result) {
           setState(() {
             progressValue = 0;
           });
@@ -68,6 +72,10 @@ class _ProgressIndicatorAnimationState
               height: 10,
               child: LinearProgressIndicator(
                 value: progressValue,
+                backgroundColor: widget.progressIndicatorBackground,
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  widget.progressIndicatorColor,
+                ),
               ),
             )
           ],

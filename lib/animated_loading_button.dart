@@ -186,6 +186,10 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
           onAsyncCallFinished: widget.onAsyncCallFinished,
           buttonChild: widget.buttonChild!,
           color: widget.buttonColor,
+          buttonWidth: widget.buttonWidth,
+          buttonHeight: widget.buttonHeight,
+          buttonRadius: widget.buttonRadius,
+          buttonShadow: widget.buttonShadow,
         );
       default:
         return Container();

@@ -69,6 +69,20 @@ class ExampleScreen extends StatelessWidget {
               onPress: onPress,
               onAsyncCallFinished: (value) {},
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            AnimatedLoadingButton<void>.progressIndicator(
+              buttonChild: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  Icon(Icons.login),
+                  Text('Login')
+                ],
+              ),
+              onPress: onPress,
+              onAsyncCallFinished: (value) {},
+            ),
           ],
         ),
       ),

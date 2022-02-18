@@ -8,6 +8,10 @@ class ProgressIndicatorAnimation<T> extends StatefulWidget {
     required this.onAsyncCallFinished,
     required this.buttonChild,
     required this.color,
+    required this.buttonWidth,
+    required this.buttonHeight,
+    this.buttonRadius,
+    this.buttonShadow,
   }) : super(key: key);
 
   final Duration duration;
@@ -15,6 +19,10 @@ class ProgressIndicatorAnimation<T> extends StatefulWidget {
   final Function(T) onAsyncCallFinished;
   final Widget buttonChild;
   final Color color;
+  final BorderRadius? buttonRadius;
+  final BoxShadow? buttonShadow;
+  final double buttonWidth;
+  final double buttonHeight;
 
   @override
   _ProgressIndicatorAnimationState createState() =>
@@ -32,30 +40,35 @@ class _ProgressIndicatorAnimationState
         setState(() {
           progressValue = null;
         });
+        widget.onPress.call().then((result){
+          setState(() {
+            progressValue = 0;
+          });
+          widget.onAsyncCallFinished.call(result);
+        });
       },
       child: Container(
-        //TODO update width and height attributes
-        width: 150,
-        height: 50,
+        width: widget.buttonWidth,
+        height: widget.buttonHeight,
         decoration: BoxDecoration(
-          //borderRadius: BorderRadius.circular(10),
+          borderRadius: widget.buttonRadius,
           color: widget.color,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: const Offset(0, 1),
-            ),
-          ],
+          boxShadow: widget.buttonShadow == null
+              ? null
+              : [
+                  widget.buttonShadow!,
+                ],
         ),
         child: Column(
           children: [
             Expanded(
               child: widget.buttonChild,
             ),
-            LinearProgressIndicator(
-              value: progressValue,
+            SizedBox(
+              height: 10,
+              child: LinearProgressIndicator(
+                value: progressValue,
+              ),
             )
           ],
         ),

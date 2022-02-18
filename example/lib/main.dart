@@ -47,10 +47,10 @@ class ExampleScreen extends StatelessWidget {
                   Text('Login')
                 ],
               ),
-              colors: const [
-                Colors.blue,
-                Colors.cyan,
-                Colors.black
+              colors: [
+                Colors.blue[400]!,
+                Colors.blue[800]!,
+                Colors.blue[900]!,
               ],
               onPress: onPress,
               onAsyncCallFinished: (value) {},

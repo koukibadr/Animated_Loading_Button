@@ -5,6 +5,7 @@ import 'package:animated_loading_button/constants/arrays.dart';
 import 'package:flutter/material.dart';
 
 import 'animations/color_changing_animation.dart';
+import 'animations/progress_indicator_animation.dart';
 
 // ignore: must_be_immutable
 class AnimatedLoadingButton<T> extends StatefulWidget {

@@ -31,6 +31,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonAnimation = ButtonAnimation.rotatedIcon;    
     progressIndicatorColor = null;
     progressIndicatorBackground = null;
+    progressIndicatorSize = 0;
   }
 
   AnimatedLoadingButton.colorChangingButton({
@@ -55,6 +56,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonAnimation = ButtonAnimation.colorChanging;
     progressIndicatorColor = null;
     progressIndicatorBackground = null;
+    progressIndicatorSize = 0;
   }
 
   AnimatedLoadingButton.fadingAnimation({
@@ -79,6 +81,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonAnimation = ButtonAnimation.fadingButton;
     progressIndicatorColor = null;
     progressIndicatorBackground = null;
+    progressIndicatorSize = 0;
   }
 
   AnimatedLoadingButton.progressIndicator({
@@ -96,6 +99,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     this.buttonColor = Colors.blue,
     this.progressIndicatorColor = Colors.blue,
     this.progressIndicatorBackground = Colors.white,
+    this.progressIndicatorSize = 5,
   }) : super(key: key) {
     assert(buttonChild != null);
     assert(progressIndicatorColor != null);
@@ -129,6 +133,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 
   late Color? progressIndicatorColor;
   late Color? progressIndicatorBackground;
+  late double  progressIndicatorSize;
 
   @override
   _AnimatedLoadingButtonState createState() => _AnimatedLoadingButtonState();
@@ -192,6 +197,7 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
           buttonShadow: widget.buttonShadow,
           progressIndicatorBackground: widget.progressIndicatorBackground!,
           progressIndicatorColor: widget.progressIndicatorColor!,
+          progressIndicatorSize: widget.progressIndicatorSize,
         );
       default:
         return Container();

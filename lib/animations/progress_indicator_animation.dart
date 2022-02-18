@@ -12,6 +12,7 @@ class ProgressIndicatorAnimation<T> extends StatefulWidget {
     required this.buttonHeight,
     required this.progressIndicatorColor,
     required this.progressIndicatorBackground,
+    required this.progressIndicatorSize,
     this.buttonRadius,
     this.buttonShadow,
   }) : super(key: key);
@@ -27,6 +28,7 @@ class ProgressIndicatorAnimation<T> extends StatefulWidget {
   final double buttonHeight;
   final Color progressIndicatorColor;
   final Color progressIndicatorBackground;
+  final double progressIndicatorSize;
 
   @override
   _ProgressIndicatorAnimationState createState() =>
@@ -69,7 +71,7 @@ class _ProgressIndicatorAnimationState
               child: widget.buttonChild,
             ),
             SizedBox(
-              height: 10,
+              height: widget.progressIndicatorSize,
               child: LinearProgressIndicator(
                 value: progressValue,
                 backgroundColor: widget.progressIndicatorBackground,

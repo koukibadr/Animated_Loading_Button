@@ -24,10 +24,13 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     this.buttonWidth = 200,
     this.buttonHeight = 50,
   }) : super(key: key) {
+    assert(buttonIcon != null && buttonText != null);
+
     buttonChild = null;
     colors = [];
-    buttonAnimation = ButtonAnimation.rotatedIcon;
-    assert(buttonIcon != null && buttonText != null);
+    buttonAnimation = ButtonAnimation.rotatedIcon;    
+    progressIndicatorColor = null;
+    progressIndicatorBackground = null;
   }
 
   AnimatedLoadingButton.colorChangingButton({
@@ -50,6 +53,8 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonIcon = null;
     buttonText = null;
     buttonAnimation = ButtonAnimation.colorChanging;
+    progressIndicatorColor = null;
+    progressIndicatorBackground = null;
   }
 
   AnimatedLoadingButton.fadingAnimation({
@@ -72,6 +77,8 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonText = null;
     colors = [];
     buttonAnimation = ButtonAnimation.fadingButton;
+    progressIndicatorColor = null;
+    progressIndicatorBackground = null;
   }
 
   AnimatedLoadingButton.progressIndicator({
@@ -86,8 +93,14 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     this.buttonShadow,
     this.buttonWidth = 200,
     this.buttonHeight = 50,
+    this.buttonColor = Colors.blue,
+    this.progressIndicatorColor = Colors.blue,
+    this.progressIndicatorBackground = Colors.white,
   }) : super(key: key) {
-    buttonColor = Colors.blue;
+    assert(buttonChild != null);
+    assert(progressIndicatorColor != null);
+    assert(progressIndicatorBackground != null);
+
     buttonIcon = null;
     buttonText = null;
     colors = [];
@@ -113,6 +126,9 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 
   final double buttonWidth;
   final double buttonHeight;
+
+  late Color? progressIndicatorColor;
+  late Color? progressIndicatorBackground;
 
   @override
   _AnimatedLoadingButtonState createState() => _AnimatedLoadingButtonState();
@@ -163,14 +179,14 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
           buttonHeight: widget.buttonHeight,
           color: widget.buttonColor,
         );
-      // case ButtonAnimation.progressIndicator:
-      //   return ProgressIndicatorAnimation(
-      //     duration: duration,
-      //     onPress: onPress,
-      //     onAsyncCallFinished: onAsyncCallFinished,
-      //     buttonChild: buttonChild,
-      //     color: color,
-      //   );
+      case ButtonAnimation.progressIndicator:
+        return ProgressIndicatorAnimation(
+          duration: widget.animationDuration,
+          onPress: widget.onPress,
+          onAsyncCallFinished: widget.onAsyncCallFinished,
+          buttonChild: widget.buttonChild!,
+          color: widget.buttonColor,
+        );
       default:
         return Container();
     }

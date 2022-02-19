@@ -34,7 +34,9 @@ class ExampleScreen extends StatelessWidget {
               buttonText: const Text('Login'),
               buttonIcon: const Icon(Icons.logout_outlined),
               onPress: onPress,
-              onAsyncCallFinished: (value) {},
+              onAsyncCallFinished: (value) {
+                print('Login successfull');
+              },
             ),
             const SizedBox(
               height: 20,

@@ -28,7 +28,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 
     buttonChild = null;
     colors = [];
-    buttonAnimation = ButtonAnimation.rotatedIcon;    
+    buttonAnimation = ButtonAnimation.rotatedIcon;
     progressIndicatorColor = null;
     progressIndicatorBackground = null;
     progressIndicatorSize = 0;
@@ -74,7 +74,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     this.buttonColor = Colors.blue,
   }) : super(key: key) {
     assert(buttonChild != null);
-    
+
     buttonIcon = null;
     buttonText = null;
     colors = [];
@@ -133,7 +133,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 
   late Color? progressIndicatorColor;
   late Color? progressIndicatorBackground;
-  late double  progressIndicatorSize;
+  late double progressIndicatorSize;
 
   @override
   _AnimatedLoadingButtonState createState() => _AnimatedLoadingButtonState();

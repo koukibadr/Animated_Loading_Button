@@ -28,7 +28,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
 
     buttonChild = null;
     colors = [];
-    buttonAnimation = ButtonAnimation.rotatedIcon;
+    _buttonAnimation = ButtonAnimation.rotatedIcon;
     progressIndicatorColor = null;
     progressIndicatorBackground = null;
     progressIndicatorSize = 0;
@@ -53,7 +53,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonColor = Colors.blue;
     buttonIcon = null;
     buttonText = null;
-    buttonAnimation = ButtonAnimation.colorChanging;
+    _buttonAnimation = ButtonAnimation.colorChanging;
     progressIndicatorColor = null;
     progressIndicatorBackground = null;
     progressIndicatorSize = 0;
@@ -78,7 +78,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonIcon = null;
     buttonText = null;
     colors = [];
-    buttonAnimation = ButtonAnimation.fadingButton;
+    _buttonAnimation = ButtonAnimation.fadingButton;
     progressIndicatorColor = null;
     progressIndicatorBackground = null;
     progressIndicatorSize = 0;
@@ -108,34 +108,34 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     buttonIcon = null;
     buttonText = null;
     colors = [];
-    buttonAnimation = ButtonAnimation.progressIndicator;
+    _buttonAnimation = ButtonAnimation.progressIndicator;
   }
 
+  //common parameters
   final Future<T> Function() onPress;
-
+  final double buttonWidth;
+  final double buttonHeight;
   final Function(T) onAsyncCallFinished;
-  
-  late Widget? buttonChild;
   final Duration animationDuration;
+  late Color buttonColor;
+  final BorderRadius? buttonRadius;
+  final BoxShadow? buttonShadow;
+
+  late Widget? buttonChild;
 
   //for rotated icon
   late Widget? buttonIcon;
   late Text? buttonText;
-  late Color buttonColor;
-  BorderRadius? buttonRadius;
-  BoxShadow? buttonShadow;
 
   //for color chaning animation
   late List<Color> colors;
 
-  late ButtonAnimation buttonAnimation;
-
-  final double buttonWidth;
-  final double buttonHeight;
-
+  //for progress indicator animation
   late Color? progressIndicatorColor;
   late Color? progressIndicatorBackground;
   late double progressIndicatorSize;
+
+  late ButtonAnimation _buttonAnimation;
 
   @override
   _AnimatedLoadingButtonState createState() => _AnimatedLoadingButtonState();
@@ -148,7 +148,7 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
   }
 
   Widget _renderAnimation() {
-    switch (widget.buttonAnimation) {
+    switch (widget._buttonAnimation) {
       case ButtonAnimation.rotatedIcon:
         return RotatedIconAnimation(
           duration: widget.animationDuration,

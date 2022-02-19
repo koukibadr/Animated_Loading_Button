@@ -1,3 +1,8 @@
-## 0.0.1
+## [1.0.0] - 19/02/2022
 
-* TODO: Describe initial release.
+* Create animated button widget
+* Customizable button color and content
+* Add color changing  button animation
+* Add progress indicator button animation
+* Add fading button animation
+* Add rotated icon button animation

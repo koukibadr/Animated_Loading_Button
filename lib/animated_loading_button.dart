@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:animated_loading_button/animations/faded_animation.dart';
 import 'package:animated_loading_button/animations/rotated_icon_animation.dart';
 import 'package:animated_loading_button/constants/arrays.dart';
+import 'package:animated_loading_button/constants/values.dart';
 import 'package:flutter/material.dart';
 
 import 'animations/color_changing_animation.dart';
@@ -15,14 +16,12 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     required this.onAsyncCallFinished,
     required this.buttonIcon,
     required this.buttonText,
-    this.buttonColor = Colors.blue,
-    this.animationDuration = const Duration(
-      milliseconds: 2000,
-    ),
+    this.buttonColor = ConstantValues.defaultButtonColor,
+    this.animationDuration = ConstantValues.defaultDuration,
     this.buttonRadius,
     this.buttonShadow,
-    this.buttonWidth = 200,
-    this.buttonHeight = 50,
+    this.buttonWidth = ConstantValues.defaultWidth,
+    this.buttonHeight = ConstantValues.defaultHeight,
   }) : super(key: key) {
     assert(buttonIcon != null && buttonText != null);
 
@@ -40,13 +39,11 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     required this.onAsyncCallFinished,
     required this.buttonChild,
     required this.colors,
-    this.animationDuration = const Duration(
-      milliseconds: 2000,
-    ),
+    this.animationDuration = ConstantValues.defaultDuration,
     this.buttonRadius,
     this.buttonShadow,
-    this.buttonWidth = 200,
-    this.buttonHeight = 50,
+    this.buttonWidth = ConstantValues.defaultWidth,
+    this.buttonHeight = ConstantValues.defaultHeight,
   }) : super(key: key) {
     assert(buttonChild != null && colors.length > 1);
 
@@ -64,14 +61,12 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     required this.onPress,
     required this.onAsyncCallFinished,
     required this.buttonChild,
-    this.animationDuration = const Duration(
-      milliseconds: 2000,
-    ),
+    this.animationDuration = ConstantValues.defaultDuration,
     this.buttonRadius,
     this.buttonShadow,
-    this.buttonWidth = 200,
-    this.buttonHeight = 50,
-    this.buttonColor = Colors.blue,
+    this.buttonWidth = ConstantValues.defaultWidth,
+    this.buttonHeight = ConstantValues.defaultHeight,
+    this.buttonColor = ConstantValues.defaultButtonColor,
   }) : super(key: key) {
     assert(buttonChild != null);
 
@@ -89,17 +84,15 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     required this.onPress,
     required this.onAsyncCallFinished,
     required this.buttonChild,
-    this.animationDuration = const Duration(
-      milliseconds: 2000,
-    ),
+    this.animationDuration = ConstantValues.defaultDuration,
     this.buttonRadius,
     this.buttonShadow,
-    this.buttonWidth = 200,
-    this.buttonHeight = 50,
-    this.buttonColor = Colors.blue,
-    this.progressIndicatorColor = Colors.blue,
-    this.progressIndicatorBackground = Colors.white,
-    this.progressIndicatorSize = 5,
+    this.buttonWidth = ConstantValues.defaultWidth,
+    this.buttonHeight = ConstantValues.defaultHeight,
+    this.buttonColor = ConstantValues.defaultButtonColor,
+    this.progressIndicatorColor = ConstantValues.defaultIndicatorColor,
+    this.progressIndicatorBackground = ConstantValues.defaultIndicatorBackground,
+    this.progressIndicatorSize = ConstantValues.defaultIndicatorSize,
   }) : super(key: key) {
     assert(buttonChild != null);
     assert(progressIndicatorColor != null);

@@ -112,7 +112,9 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
   }
 
   final Future<T> Function() onPress;
+
   final Function(T) onAsyncCallFinished;
+  
   late Widget? buttonChild;
   final Duration animationDuration;
 

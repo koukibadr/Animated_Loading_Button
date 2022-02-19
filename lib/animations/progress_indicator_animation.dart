@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class ProgressIndicatorAnimation<T> extends StatefulWidget {
   const ProgressIndicatorAnimation({
     Key? key,
-    required this.duration,
     required this.onPress,
     required this.onAsyncCallFinished,
     required this.buttonChild,
@@ -17,7 +16,6 @@ class ProgressIndicatorAnimation<T> extends StatefulWidget {
     this.buttonShadow,
   }) : super(key: key);
 
-  final Duration duration;
   final Future<T> Function() onPress;
   final Function(T) onAsyncCallFinished;
   final Widget buttonChild;

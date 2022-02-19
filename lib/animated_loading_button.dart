@@ -104,11 +104,23 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     _buttonAnimation = ButtonAnimation.progressIndicator;
   }
 
-  //common parameters
+  ///callback invoked when pressing the button
+  ///required in all button types
   final Future<T> Function() onPress;
-  final double buttonWidth;
-  final double buttonHeight;
+
+  ///callback invoked when [onPress] is finished
+  ///required in all button types.
   final Function(T) onAsyncCallFinished;
+
+  ///the button width 
+  ///by default the width is set to 200
+  final double buttonWidth;
+
+  ///the button height
+  ///by default it's set to 50
+  final double buttonHeight;
+  
+  ///the animation duration applied
   final Duration animationDuration;
   late Color buttonColor;
   final BorderRadius? buttonRadius;
@@ -181,7 +193,6 @@ class _AnimatedLoadingButtonState extends State<AnimatedLoadingButton> {
         );
       case ButtonAnimation.progressIndicator:
         return ProgressIndicatorAnimation(
-          duration: widget.animationDuration,
           onPress: widget.onPress,
           onAsyncCallFinished: widget.onAsyncCallFinished,
           buttonChild: widget.buttonChild!,

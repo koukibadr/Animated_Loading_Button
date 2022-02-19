@@ -104,7 +104,7 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     _buttonAnimation = ButtonAnimation.progressIndicator;
   }
 
-  ///callback invoked when pressing the button
+  ///Future callback invoked when pressing the button
   ///required in all button types
   final Future<T> Function() onPress;
 
@@ -120,24 +120,48 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
   ///by default it's set to 50
   final double buttonHeight;
   
-  ///the animation duration applied
+  ///the animation duration applied in all animations
+  ///except progress indicator animation
   final Duration animationDuration;
+
+  ///the button color, applied in all types except
+  ///color changing animation button
+  ///by default button color is `Colors.blue`
   late Color buttonColor;
+
+  ///button radius by default it's set to null
   final BorderRadius? buttonRadius;
+
+  ///the button shadow, by default it's null
   final BoxShadow? buttonShadow;
 
+  ///the widget that will be rendered inside the button
   late Widget? buttonChild;
 
-  //for rotated icon
+  ///required when using animatedIcon button
+  ///the icon (widget) that will be drawn inside the button
   late Widget? buttonIcon;
+
+  ///required when using animatedIcon button,
+  ///the text that will be rendered inside the button
   late Text? buttonText;
 
-  //for color chaning animation
+  ///list of colors that will be used in creating
+  ///color changing button animation
+  ///
+  ///should contains 2 colors at least
   late List<Color> colors;
 
-  //for progress indicator animation
+  ///the progress indicator color
+  ///by default it's set to `Colors.blue`
   late Color? progressIndicatorColor;
+
+  ///the progress indicator background color
+  ///by default it's set to `Colors.white`
   late Color? progressIndicatorBackground;
+
+  ///the progress indicator height,
+  ///by default it's set to 5
   late double progressIndicatorSize;
 
   late ButtonAnimation _buttonAnimation;

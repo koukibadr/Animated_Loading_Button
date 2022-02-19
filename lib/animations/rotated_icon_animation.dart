@@ -34,7 +34,6 @@ class RotatedIconAnimation<T> extends StatefulWidget {
 }
 
 class _RotatedIconAnimationState extends State<RotatedIconAnimation> {
-  
   double angle = 0;
   double animationSpeed = 300;
   late Timer animationTimer;

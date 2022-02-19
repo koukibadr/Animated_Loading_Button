@@ -44,10 +44,7 @@ class ExampleScreen extends StatelessWidget {
             AnimatedLoadingButton<void>.colorChangingButton(
               buttonChild: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.login),
-                  Text('Login')
-                ],
+                children: const [Icon(Icons.login), Text('Login')],
               ),
               colors: [
                 Colors.blue[400]!,
@@ -63,10 +60,7 @@ class ExampleScreen extends StatelessWidget {
             AnimatedLoadingButton<void>.fadingAnimation(
               buttonChild: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.login),
-                  Text('Login')
-                ],
+                children: const [Icon(Icons.login), Text('Login')],
               ),
               onPress: onPress,
               onAsyncCallFinished: (value) {},
@@ -77,10 +71,7 @@ class ExampleScreen extends StatelessWidget {
             AnimatedLoadingButton<void>.progressIndicator(
               buttonChild: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Icon(Icons.login),
-                  Text('Login')
-                ],
+                children: const [Icon(Icons.login), Text('Login')],
               ),
               onPress: onPress,
               onAsyncCallFinished: (value) {},

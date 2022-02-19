@@ -91,7 +91,8 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
     this.buttonHeight = ConstantValues.defaultHeight,
     this.buttonColor = ConstantValues.defaultButtonColor,
     this.progressIndicatorColor = ConstantValues.defaultIndicatorColor,
-    this.progressIndicatorBackground = ConstantValues.defaultIndicatorBackground,
+    this.progressIndicatorBackground =
+        ConstantValues.defaultIndicatorBackground,
     this.progressIndicatorSize = ConstantValues.defaultIndicatorSize,
   }) : super(key: key) {
     assert(buttonChild != null);
@@ -112,14 +113,14 @@ class AnimatedLoadingButton<T> extends StatefulWidget {
   ///required in all button types.
   final Function(T) onAsyncCallFinished;
 
-  ///the button width 
+  ///the button width
   ///by default the width is set to 200
   final double buttonWidth;
 
   ///the button height
   ///by default it's set to 50
   final double buttonHeight;
-  
+
   ///the animation duration applied in all animations
   ///except progress indicator animation
   final Duration animationDuration;

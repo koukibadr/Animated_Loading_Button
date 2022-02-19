@@ -4,7 +4,7 @@ class ConstantValues {
   static const Duration defaultDuration = Duration(
     milliseconds: 2000,
   );
-  
+
   static const double defaultWidth = 200;
   static const double defaultHeight = 50;
   static const Color defaultButtonColor = Colors.blue;
